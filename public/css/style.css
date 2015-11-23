@@ -1,0 +1,27 @@
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+
+/* Base Styles */
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.panel {
+  width: 80%;
+  margin: 0 10% 0 10%;
+}
+.search {
+  width: 80%;
+  margin: 0 10% 0 10%;
+}
