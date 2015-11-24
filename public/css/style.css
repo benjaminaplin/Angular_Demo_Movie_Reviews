@@ -25,3 +25,5 @@
   width: 80%;
   margin: 0 10% 0 10%;
 }
+/* for sticky header */
+body { padding-top: 70px; }
