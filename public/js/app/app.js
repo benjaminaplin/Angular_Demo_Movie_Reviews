@@ -5,11 +5,15 @@ var myApp = angular.module('myApp', [
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-  when('/list', {
-    templateUrl: 'partials/list.html',
-    controller: 'ListController'
+  when('/reviews', {
+    templateUrl: 'partials/review-list.ejs.html',
+    controller: 'ReviewListController'
+  }).
+  when('/reviews/:reviewId', {
+    templateUrl: 'partials/review-detail.ejs.html',
+    controller: 'ReviewDetailController'
   }).
   otherwise({
-    redirectTo: '/list'
+    redirectTo: '/reviews'
   });
 }]);
