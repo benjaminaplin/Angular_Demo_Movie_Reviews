@@ -1,13 +1,16 @@
 var express = require('express');
 var request = require('request');
-var ejs = require('ejs');
+var morgan = require('morgan');
+var serveStatic = require('serve-static');
 var app = express()
 
-app.set('view-engine', 'ejs')
-app.use( express.static( 'public') );
+// app.use(morgan('combined'))
+app.use(serveStatic(__dirname + '/public'))
 
-app.get("/", function(req,res){
-  res.render('index.ejs')
+var router = express.Router();
+
+router.get("/", function(req,res){
+  res.send('index.html')
 })
 
 app.listen(process.env.PORT || 3000, function(){

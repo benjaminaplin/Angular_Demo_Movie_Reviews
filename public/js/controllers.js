@@ -5,7 +5,6 @@ reviewControllers.controller('ReviewListController', ['$scope', '$http', functio
   var url = 'http://api.nytimes.com/svc/movies/v2/reviews/all.json?api-key=' + apiKey;
   $http.get(url).success(function(data){
      $scope.reviews = data.results;
-     console.log($scope.reviews);
      //prepopulates the sort by name/date drop-down
 
   });
@@ -14,5 +13,5 @@ reviewControllers.controller('ReviewListController', ['$scope', '$http', functio
 
 reviewControllers.controller('ReviewDetailController', ['$scope', '$routeParams', function($scope, $routeParams){
   $scope.reviewId = $routeParams.reviewId;
-}]);
+}]);  
 
