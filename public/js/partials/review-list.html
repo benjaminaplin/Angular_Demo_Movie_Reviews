@@ -59,8 +59,8 @@
   </label>
 </div><!--search-->
 
-<div class="reviewlist">
-  <div class="review cf panel panel-primary" ng-repeat="item in reviews | filter:query | orderBy: reviewOrder:direction">
+<div class="reviewlist" ng-controller="ControllerReviewList as reviewlistvm">
+  <div class="review cf panel panel-primary ng-cloak review" ng-repeat="item in reviewlistvm.list() | filter:query | orderBy: reviewOrder:direction">
     <div class="panel-heading">
       <h3 class="panel-title">Review</h3>
     </div>
