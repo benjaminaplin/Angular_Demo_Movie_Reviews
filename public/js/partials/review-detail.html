@@ -1,1 +1,13 @@
-TBD: detail view for <span>{{reviewId}}</span>
+<section class="reviewinfo">
+  <div class="review cf" ng-model="reviews" ng-controller="ControllerReviewDetail as reviewdetailvm">
+    <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
+    <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a>
+    <h1>{{reviewdetailvm.whichItem.sort_name}}</h1>
+    <div class="info">
+      <h3>{{reviews[whichItem].headline}}</h3>
+      <img ng-src="{{reviews[whichItem].multimedia.resource.src" alt="Photo of {{reviews[whichItem].display_title}}">
+      <div class="bio">{{reviews[whichItem].byline}}</div>
+    </div>
+  </div>
+  <a href="index.html">&laquo; Back to search</a>
+</section>

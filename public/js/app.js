@@ -3,7 +3,7 @@ angular.module('reviewApp', ['ngRoute'])
 
 .controller('ControllerReviewList', ['ReviewService', function (ReviewService){
   var vm = this;
-  vm.artistOrder = 'name';
+  vm.reviewOrder = 'name';
   vm.list = function(){
     return ReviewService.listReviews();
   }
@@ -13,9 +13,17 @@ angular.module('reviewApp', ['ngRoute'])
   init();
 }])
 
-.controller('ControllerReviewDetail', [ '$routeParams', function($scope, $routeParams){
+.controller('ControllerReviewDetail', ['ReviewService','$routeParams', function(ReviewService, $routeParams){
   var vm = this;
-  this.reviewId = $routeParams.reviewId;
+  vm.list = function(){
+    return ReviewService.listReviews();
+  }
+  var init = function(){
+    return ReviewService.getReviews();
+  };
+  init();
+  vm.whichItem = $routeParams.itemId;
+  vm.reviewOrder = 'name';  
 }])
 
 .service('ReviewService', ['$http', function($http){
@@ -40,7 +48,7 @@ angular.module('reviewApp', ['ngRoute'])
     templateUrl: 'js/partials/review-list.html',
     controller: 'ControllerReviewList'
   }).
-  when('/reviews/:reviewId', {
+  when('/reviews/:itemId', {
     templateUrl: 'js/partials/review-detail.html',
     controller: 'ControllerReviewDetail'
   }).

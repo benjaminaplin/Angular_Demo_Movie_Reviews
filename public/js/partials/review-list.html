@@ -65,7 +65,7 @@
       <h3 class="panel-title">Review</h3>
     </div>
     <div class="panel-body">
-      <a href="#/reviews/{{review.id}}">
+      <a href="#/reviews/{{reviewlistvm.list().indexOf(item)}}">
         <img ng-src="{{item.multimedia.resource.src}}" alt="Photo of {{item.display_title}}">
         <div class="info">
           <h2>{{item.headline}}</h2>
