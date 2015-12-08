@@ -1,5 +1,5 @@
 
-angular.module('reviewApp', ['ngRoute'])
+angular.module('reviewApp', ['ui.router'])
 
 .controller('ControllerReviewList', ['ReviewService', function (ReviewService){
   var vm = this;
@@ -34,17 +34,21 @@ angular.module('reviewApp', ['ngRoute'])
   };  
 }])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-  when('/reviews', {
-    templateUrl: 'js/partials/review-list.html',
-    controller: 'ControllerReviewList'
-  }).
-  when('/reviews/:reviewId', {
-    templateUrl: 'js/partials/review-detail.html',
-    controller: 'ControllerReviewDetail'
-  }).
-  otherwise({
-    redirectTo: '/reviews'
-  });
+.config(function ($stateProvider, $urlRouteProvider) {
+  $stateProvider
+    .state('review', {
+      url: '/',
+      views: {
+        'reviews': {
+          controller: 'ControllerReviewList as controllerReviewList',
+          templateUrl: 'js/partials/review-list.tmpl.html',
+        },
+        'review': {
+          controller: 'ControllerReviewDetail',
+          templateUrl: 'js/partials/review-detail.tmpl.html',
+        }
+      }
+    });
+  $urlRouteProvider.otherwise('/reviews');
+
 }]);
