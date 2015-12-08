@@ -1,13 +1,18 @@
 <section class="reviewinfo">
-  <div class="review cf" ng-model="reviews" ng-controller="ControllerReviewDetail as reviewdetailvm">
+  <div class="review cf panel panel-default" ng-controller="ControllerReviewDetail as reviewdetailvm">
     <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
     <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a>
-    <h1>{{reviewdetailvm.whichItem.sort_name}}</h1>
+    <h1>{{reviewdetailvm.review.sort_name}}</h1>
     <div class="info">
-      <h3>{{reviews[whichItem].headline}}</h3>
-      <img ng-src="{{reviews[whichItem].multimedia.resource.src" alt="Photo of {{reviews[whichItem].display_title}}">
-      <div class="bio">{{reviews[whichItem].byline}}</div>
+      <h3>{{reviewdetailvm.review.headline}}</h3>
+      <h4>{{reviewdetailvm.review.summary_short}}</h4>
+      <img ng-src="{{reviewdetailvm.review.multimedia.resource.src}}" alt="Photo of {{reviews.display_title}}">
+      <h4>{{reviewdetailvm.review.byline}}</h4>
+      <h2>Suggested Links</h2>
+      <div ng-repeat="item in reviewdetailvm.review.related_urls">
+        <h4><a href="{{item.url}}">{{item.suggested_link_text}}</a></h4>
+      </div>
     </div>
-  </div>
-  <a href="index.html">&laquo; Back to search</a>
+    <a href="index.html">&laquo; Back to search</a>
+  </div><!--panel-->
 </section>

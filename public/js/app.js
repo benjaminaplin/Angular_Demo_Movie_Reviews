@@ -13,7 +13,7 @@ angular.module('reviewApp', ['ngRoute'])
   init();
 }])
 
-.controller('ControllerReviewDetail', ['ReviewService','$routeParams', function(ReviewService, $routeParams){
+.controller('ControllerReviewDetail', ['ReviewService','$routeParams', '$http', function(ReviewService, $routeParams, $http){
   var vm = this;
   vm.list = function(){
     return ReviewService.listReviews();
@@ -22,8 +22,11 @@ angular.module('reviewApp', ['ngRoute'])
     return ReviewService.getReviews();
   };
   init();
-  vm.whichItem = $routeParams.itemId;
+  vm.itemId = $routeParams.itemId;
   vm.reviewOrder = 'name';  
+  vm.reviews = this.list();
+  vm.review = vm.reviews[vm.itemId]
+  console.log('vm', vm)
 }])
 
 .service('ReviewService', ['$http', function($http){
@@ -31,28 +34,28 @@ angular.module('reviewApp', ['ngRoute'])
   this.getReviews = function(){
     $http.get('/api/reviews').then(function(res){
       reviews = res.data;
-      console.log('got reviews from backend upon load');
+      // console.log('got reviews from backend upon load');
     }, function(errResponse){
        console.error('reviews query error')
     });
   }
   this.listReviews = function(){
-    console.log('your listin reviews!')
+    // console.log('your listin reviews!')
     return reviews;
   };  
 }])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-  when('/reviews', {
-    templateUrl: 'js/partials/review-list.html',
-    controller: 'ControllerReviewList'
-  }).
-  when('/reviews/:itemId', {
-    templateUrl: 'js/partials/review-detail.html',
-    controller: 'ControllerReviewDetail'
-  }).
-  otherwise({
-    redirectTo: '/reviews'
+    when('/reviews', {
+      templateUrl: 'js/partials/review-list.html',
+      controller: 'ControllerReviewList'
+    }).
+    when('/reviews/:itemId', {
+      templateUrl: 'js/partials/review-detail.html',
+      controller: 'ControllerReviewDetail'
+    }).
+    otherwise({
+      redirectTo: '/reviews'
   });
 }]);
