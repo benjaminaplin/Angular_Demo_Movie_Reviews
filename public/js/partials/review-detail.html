@@ -3,8 +3,9 @@
     <a href="#/details/{{prevItem}}" class="btn btn-left">&lt;</a>
     <a href="#/details/{{nextItem}}" class="btn btn-right">&gt;</a>
     <h1>{{reviewdetailvm.review.sort_name}}</h1>
+    <h3><a href="{{reviewdetailvm.review.link.url}}">{{reviewdetailvm.review.link.suggested_link_text}}</a></h3>
     <div class="info">
-      <h3>{{reviewdetailvm.review.headline}}</h3>
+      <h2>{{reviewdetailvm.review.headline}}</h2>
       <h4>{{reviewdetailvm.review.summary_short}}</h4>
       <img ng-src="{{reviewdetailvm.review.multimedia.resource.src}}" alt="Photo of {{reviews.display_title}}">
       <h4>{{reviewdetailvm.review.byline}}</h4>
