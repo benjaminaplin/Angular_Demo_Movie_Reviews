@@ -1,17 +1,19 @@
 <section class="reviewinfo">
   <div class="review cf panel panel-primary ng-cloak" ng-controller="ControllerReviewDetail as reviewdetailvm">
-    <a href="#/reviews/{{reviewdetailvm.prevReview}}" class="btn btn-left">&lt;</a>
-    <a href="#/reviews/{{reviewdetailvm.nextReview}}" class="btn btn-right">&gt;</a>
+    <a href="#/reviews/{{reviewdetailvm.prevReview}}" class="btn btn-left"><i class="material-icons">chevron_left</i></a>
+    <a href="#/reviews/{{reviewdetailvm.nextReview}}" class="btn btn-right"><i class="material-icons">chevron_right</i></a>
     <div class="panel-heading">
       <h1>{{reviewdetailvm.review.sort_name}}</h1>
     </div>
     <div class="panel-body">
-      <h3><a href="{{reviewdetailvm.review.link.url}}">{{reviewdetailvm.review.link.suggested_link_text}}</a></h3>
       <div class="info">
+        <img ng-src="{{reviewdetailvm.review.multimedia.resource.src}}" alt="Photo of {{reviews.display_title}}">
         <h2>{{reviewdetailvm.review.headline}}</h2>
         <h4>{{reviewdetailvm.review.summary_short}}</h4>
-        <img ng-src="{{reviewdetailvm.review.multimedia.resource.src}}" alt="Photo of {{reviews.display_title}}">
         <h4>{{reviewdetailvm.review.byline}}</h4>
+        <h3>
+          <a href="{{reviewdetailvm.review.link.url}}">{{reviewdetailvm.review.link.suggested_link_text}}</a>
+        </h3>
         <h2>Suggested Links</h2>
         <div ng-repeat="item in reviewdetailvm.review.related_urls">
           <h4><a href="{{item.url}}">{{item.suggested_link_text}}</a></h4>
