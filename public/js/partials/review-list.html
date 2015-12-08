@@ -60,10 +60,10 @@
 </div><!--search-->
 
 <div class="reviewlist" ng-controller="ControllerReviewList as reviewlistvm">
-  <div class="review cf panel panel-primary ng-cloak review" ng-repeat="item in reviewlistvm.list() | filter:query | orderBy: reviewOrder:direction">
+  <div class="review cf panel panel-primary ng-cloak" ng-repeat="item in reviewlistvm.list() | filter:query | orderBy: reviewOrder:direction">
     <div class="panel-heading">
-      <h3 class="panel-title">Review</h3>
-    </div>
+      <h1 class="panel-title">{{item.display_title}}</h1>
+    </div><!--panel-heading-->
     <div class="panel-body">
       <a href="#/reviews/{{reviewlistvm.list().indexOf(item)}}">
         <img ng-src="{{item.multimedia.resource.src}}" alt="Photo of {{item.display_title}}">

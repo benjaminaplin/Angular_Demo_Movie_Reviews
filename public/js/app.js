@@ -11,6 +11,7 @@ angular.module('reviewApp', ['ngRoute'])
     return ReviewService.getReviews();
   };
   init();
+  console.log('vm', vm)
 }])
 
 .controller('ControllerReviewDetail', ['ReviewService','$routeParams', '$http', function(ReviewService, $routeParams, $http){
@@ -26,6 +27,16 @@ angular.module('reviewApp', ['ngRoute'])
   vm.reviewOrder = 'name';  
   vm.reviews = this.list();
   vm.review = vm.reviews[vm.itemId]
+  if(parseInt(vm.itemId) == vm.reviews.length - 1){
+    vm.nextReview = 0
+  } else {
+    vm.nextReview = parseInt(vm.itemId) + 1;
+  }
+  if(parseInt(vm.itemId) == 0){
+    vm.prevReview = vm.reviews.length -1;
+  } else {
+    vm.prevReview = parseInt(vm.itemId) - 1;
+  }
   console.log('vm', vm)
 }])
 
