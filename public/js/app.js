@@ -14,7 +14,7 @@ angular.module('reviewApp', ['ngRoute'])
   console.log('vm', vm)
 }])
 
-.controller('ControllerReviewDetail', ['ReviewService','$routeParams', '$http', function(ReviewService, $routeParams, $http){
+.controller('ControllerReviewDetail', ['ReviewService','$routeParams', function(ReviewService, $routeParams){
   var vm = this;
   vm.list = function(){
     return ReviewService.listReviews();
@@ -37,7 +37,6 @@ angular.module('reviewApp', ['ngRoute'])
   } else {
     vm.prevReview = parseInt(vm.itemId) - 1;
   }
-  console.log('vm', vm)
 }])
 
 .service('ReviewService', ['$http', function($http){
