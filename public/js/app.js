@@ -44,13 +44,11 @@ angular.module('reviewApp', ['ngRoute'])
   this.getReviews = function(){
     $http.get('/api/reviews').then(function(res){
       reviews = res.data;
-      // console.log('got reviews from backend upon load');
     }, function(errResponse){
        console.error('reviews query error')
     });
   }
   this.listReviews = function(){
-    // console.log('your listin reviews!')
     return reviews;
   };  
 }])

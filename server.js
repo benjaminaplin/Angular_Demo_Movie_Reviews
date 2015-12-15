@@ -4,7 +4,7 @@ var morgan = require('morgan');
 var serveStatic = require('serve-static');
 var app = express()
 
-// app.use(morgan('combined'))
+app.use(morgan('combined'))
 app.use(serveStatic(__dirname + '/public'))
 
 var router = express.Router();
